@@ -10,8 +10,13 @@ No curator, no summary workflow, no multi-provider "all" mode, no background tur
 ## Install
 
 ```sh
-cd ~/.pi/agent
-npm install <path-or-git-url-to-pi-web-access-minimal>
+pi install git:github.com/chuanjin-su/pi-web-access-minimal
+```
+
+or, for a one-off try without installing:
+
+```sh
+pi -e git:github.com/chuanjin-su/pi-web-access-minimal
 ```
 
 ## Configure
@@ -57,12 +62,10 @@ All keys are optional — provider auth falls back to environment variables, and
 | `pdf.enabled` | Set `false` to reject PDF URLs. |
 | `pdf.provider` | `"auto"` (default) or `"unpdf"` (local extraction). |
 | `pdf.maxSizeMB` / `pdf.maxPages` | PDF size and page-count limits (defaults `20` MB / `100` pages). |
-| `fetch.answerProvider` / `fetch.answerModel` | Model used by `mode: "answer"` (defaults to the current Pi model). |
-| `image.enabled` | Set `false` to disable image fetching. |
 
 If a request fails at the configured provider, `web_search` automatically retries the remaining providers (exa is always available) before surfacing an error.
 
-## Content paging (option B design)
+## Content paging
 
 `fetch_content` inlines at most `maxInlineContentChars` per result. When truncated, the result tells the agent to call again:
 
@@ -91,4 +94,4 @@ npx tsc        # typecheck
 npm test       # node --test
 ```
 
-MIT (© 2025 Chuanjin Su; provider/extraction code adapted from pi-web-access, MIT © Nico Bailon).
+MIT (© 2026 Chuanjin Su; provider/extraction code adapted from pi-web-access, MIT © Nico Bailon).
