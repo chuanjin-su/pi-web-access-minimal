@@ -1,6 +1,6 @@
 # pi-web-access-minimal
 
-Minimal web search + URL fetching for the [Pi coding agent](https://github.com/earendil-works/pi-coding-agent). A stripped-down alternative to [pi-web-access](https://github.com/nicobailon/pi-web-access) that keeps only the two core tools:
+Minimal web search + URL fetching for the [Pi coding agent](https://github.com/earendil-works/pi-coding-agent). A stripped-down alternative to [pi-web-access](https://github.com/nicobailon/pi-web-access) that keeps only the two core tools — measuring ~37% fewer tokens per search turn than pi-web-access thanks to its smaller tool context.
 
 - **`web_search`** — search via OpenAI (Responses API / Codex), Brave Search API, or Exa (keyless MCP — works with no API key at all). Returns an AI-synthesized answer with source citations. The provider is **resolved from your config, automatically** — the agent never picks one, which keeps tool descriptions (and token usage) small.
 - **`fetch_content`** — fetch URLs and extract readable content as markdown. Supports raw HTTP bodies (`mode: "raw"`), page-local Q&A (`mode: "answer"`), direct images, GitHub repositories, and PDFs. Large content is **paged** via an `offset` parameter instead of a third retrieval tool.
