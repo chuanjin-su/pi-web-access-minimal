@@ -1,0 +1,51 @@
+{
+  "name": "pi-web-access-minimal",
+  "version": "0.1.0",
+  "description": "Minimal web search and URL fetching for Pi coding agent. Search via OpenAI or Brave; fetch readable/raw content from URLs, GitHub repos, and PDFs.",
+  "type": "module",
+  "scripts": {
+    "test": "node --test",
+    "typecheck": "tsc",
+    "audit:runtime": "npm audit --omit=dev --omit=peer"
+  },
+  "keywords": [
+    "pi-package",
+    "pi",
+    "pi-coding-agent",
+    "extension",
+    "web-search",
+    "fetch",
+    "scraping"
+  ],
+  "license": "MIT",
+  "author": "Chuanjin Su",
+  "files": [
+    "src/**/*.ts",
+    "index.ts"
+  ],
+  "pi": {
+    "extensions": [
+      "./index.ts"
+    ]
+  },
+  "devDependencies": {
+    "@types/turndown": "^5.0.6",
+    "typescript": "^5.9.2"
+  },
+  "dependencies": {
+    "@mozilla/readability": "^0.6.0",
+    "defuddle": "0.19.3",
+    "linkedom": "^0.16.0",
+    "p-limit": "^6.1.0",
+    "promise.try": "^2.0.1",
+    "turndown": "^7.2.0",
+    "typebox": "^1.1.38",
+    "undici": "^8.9.0",
+    "unpdf": "^1.6.2"
+  },
+  "peerDependencies": {
+    "@earendil-works/pi-ai": "*",
+    "@earendil-works/pi-coding-agent": "*",
+    "@earendil-works/pi-tui": "*"
+  }
+}
