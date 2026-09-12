@@ -21,6 +21,9 @@ npm-debug.log*
 .vscode/
 *.swp
 
+# Local clones (upstream repos used for reference)
+tmp/
+
 # Test / coverage
 coverage/
 .nyc_output/
