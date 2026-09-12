@@ -103,11 +103,17 @@ test("search() falls back to exa when every credential provider fails", async ()
 					return new Response("unreachable", { status: 503 });
 				}
 				if (target.startsWith("https://mcp.exa.ai/mcp")) {
-					return new Response("data: " + JSON.stringify({
-						result: { content: [{ type: "text", text: JSON.stringify({ results: [
-							{ title: "Exa Result", url: "https://example.com/exa", highlights: ["exa snippet"] },
-						] }) },
-					] }), { status: 200, headers: { "content-type": "text/event-stream" } });
+					const mcpBody = JSON.stringify({
+						result: {
+							content: [{
+								type: "text",
+								text: JSON.stringify({ results: [
+									{ title: "Exa Result", url: "https://example.com/exa", highlights: ["exa snippet"] },
+								] }),
+							}],
+						},
+					});
+					return new Response("data: " + mcpBody, { status: 200, headers: { "content-type": "text/event-stream" } });
 				}
 				return realFetch(url, init);
 			};

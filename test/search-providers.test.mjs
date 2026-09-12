@@ -152,12 +152,18 @@ test("Exa keyless MCP maps filters onto the advanced tool and parses JSON result
 		globalThis.fetch = async (url, init) => {
 			capturedUrl = String(url);
 			capturedBody = JSON.parse(init.body);
-			return new Response("data: " + JSON.stringify({
-				result: { content: [{ type: "text", text: JSON.stringify({ results: [
-					{ title: "Exa Hit", url: "https://docs.example.com/guide", highlights: ["first highlight", "second highlight"] },
-					{ title: "No Url", url: "" },
-				] }) } ] }),
-			{ status: 200, headers: { "content-type": "text/event-stream" } });
+			const mcpBody = JSON.stringify({
+				result: {
+					content: [{
+						type: "text",
+						text: JSON.stringify({ results: [
+							{ title: "Exa Hit", url: "https://docs.example.com/guide", highlights: ["first highlight", "second highlight"] },
+							{ title: "No Url", url: "" },
+						] }),
+					}],
+				},
+			});
+			return new Response("data: " + mcpBody, { status: 200, headers: { "content-type": "text/event-stream" } });
 		};
 
 		const { searchWithExa } = await import(${JSON.stringify(exaModuleUrl)});
@@ -186,7 +192,7 @@ test("Exa keyless MCP maps filters onto the advanced tool and parses JSON result
 	assert.deepEqual(output.args.includeDomains, ["docs.example.com"]);
 	assert.deepEqual(output.args.excludeDomains, ["spam.example.com"]);
 	assert.ok(output.args.startPublishedDate);
-	assert.equal(output.answer, "first highlight second highlight\\nSource: Exa Hit (https://docs.example.com/guide)");
+	assert.equal(output.answer, "first highlight second highlight\nSource: Exa Hit (https://docs.example.com/guide)");
 	assert.deepEqual(output.results, [{ title: "Exa Hit", url: "https://docs.example.com/guide", snippet: "" }]);
 });
 
