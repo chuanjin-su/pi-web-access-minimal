@@ -7,6 +7,21 @@ Minimal web search + URL fetching for the [Pi coding agent](https://github.com/e
 
 No curator, no summary workflow, no multi-provider "all" mode, no background turn triggering.
 
+## Why minimal? Smaller tool context
+
+Every registered tool's name, description, and schema is injected into the model's context on **every turn** of every session. Two lean tools cost far less than a large tool surface — and that saving compounds across an entire session.
+
+Measured head-to-head (same query, same model, both extensions pinned to Exa keyless search, one `web_search` call each):
+
+| | pi-web-access-minimal | pi-web-access |
+|---|---|---|
+| End-to-end tokens per search turn | **9,096** | 14,433 |
+| Search result payload | 3,134 chars (~784 tok) | 3,277 chars (~819 tok) |
+
+The search results themselves are nearly identical (~4% smaller here) — both call the same backend. The **~5,300-token (≈37%) reduction** comes from the smaller tool context: 2 tools with terse descriptions instead of a large tool surface with scaffolding. Since tool definitions stay in context for every turn, a session that searches repeatedly keeps paying the smaller bill each turn.
+
+(Single-sample measurement; exact numbers vary with query and model.)
+
 ## Install
 
 ```sh
