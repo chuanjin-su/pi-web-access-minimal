@@ -10,13 +10,21 @@ No curator, no summary workflow, no multi-provider "all" mode, no background tur
 ## Install
 
 ```sh
-pi install git:github.com/chuanjin-su/pi-web-access-minimal
+pi install npm:pi-web-access-minimal
 ```
 
-or, for a one-off try without installing:
+Also available from source (pinned releases under [Releases](https://github.com/chuanjin-su/pi-web-access-minimal/releases)):
 
 ```sh
-pi -e git:github.com/chuanjin-su/pi-web-access-minimal
+pi install git:github.com/chuanjin-su/pi-web-access-minimal
+# or pin the release:
+pi install git:github.com/chuanjin-su/pi-web-access-minimal@v0.1.0
+```
+
+To try it without installing:
+
+```sh
+pi -e npm:pi-web-access-minimal
 ```
 
 ## Configure
