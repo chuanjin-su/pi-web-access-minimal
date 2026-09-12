@@ -1,6 +1,6 @@
 {
   "name": "pi-web-access-minimal",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "Minimal web search and URL fetching for Pi coding agent. Search via OpenAI or Brave; fetch readable/raw content from URLs, GitHub repos, and PDFs.",
   "repository": {
     "type": "git",
