@@ -1,6 +1,9 @@
 # Dependencies
 node_modules/
 
+# Local npm cache workaround (root-owned ~/.npm)
+.npmcache/
+
 # Build output
 dist/
 build/
